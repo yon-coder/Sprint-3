@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro - BYB</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header class="holder">
+        <h1>Cadastro</h1>
+        <nav>
+            <a href="index.html">Início</a>
+        </nav>
+    </header>
+
+    <main class="conteudo">
+        <h2>Crie sua conta</h2>
+        <form action="server/cadastro.php" method="POST">
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="text" name="usuario" placeholder="Usuário" required>
+            <input type="number" name="idade" placeholder="Idade" required>
+            <input type="number" step="0.01" name="peso" placeholder="Peso (kg)" required>
+            <input type="number" step="0.01" name="altura" placeholder="Altura (m)" required>
+            <select name="objetivo" required>
+                <option value="ganhar">Ganhar Massa</option>
+                <option value="perder">Perder Peso</option>
+                <option value="manter">Manter</option>
+            </select>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Treinos - BYB</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="holder">
+        <h1>Plano de Treino</h1>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="perfil.html">Perfil</a>
+            <a href="dieta.html">Dieta</a>
+            <a href="progresso.html">Progresso</a>
+        </nav>
+    </div>
+
+    <div class="conteudo">
+        <h2>Treinos Personalizados:</h2>
+        <div id="treino">
+            <p>Calculando seu treino...</p>
+            <script>
+                fetch('python/ia.py')
+                    .then(response => response.text())
+                    .then(data => document.getElementById('treino').innerHTML = data);
+            </script>
+        </div>
+    </div>
+</body>
+</html>
