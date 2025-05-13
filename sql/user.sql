@@ -1,0 +1,11 @@
+CREATE TABLE user (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    usuario VARCHAR(50) NOT NULL,
+    senha VARCHAR(25) NOT NULL,
+    idade INT NOT NULL,
+    peso FLOAT NOT NULL,
+    altura FLOAT NOT NULL,
+    objetivo VARCHAR(25) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -9,14 +9,35 @@ $altura = $_POST['altura'];
 $objetivo = $_POST['objetivo'];
 $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO usuarios (nome, usuario, idade, peso, altura, objetivo, senha) 
+$sql = "INSERT INTO user (nome, usuario, idade, peso, altura, objetivo, senha) 
         VALUES ('$nome', '$usuario', '$idade', '$peso', '$altura', '$objetivo', '$senha')";
 
-if ($conn->query($sql) === TRUE) {
-    echo "Cadastro realizado com sucesso!";
-} else {
-    echo "Erro ao cadastrar: " . $conn->error;
-}
 
+
+
+?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro - BYB</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+    <header class="holder">
+        <h1>Cadastro</h1>
+        <nav>
+            <a href="../index.html">Início</a>
+        </nav>
+    </header>
+    <?php
+    if ($conn->query($sql) === TRUE) {
+    echo "Cadastro realizado com sucesso!";
+    } else {
+    echo "Erro ao cadastrar: " . $conn->error;
+    }
+    ?>
+</html>
+<?php
 $conn->close();
 ?>
