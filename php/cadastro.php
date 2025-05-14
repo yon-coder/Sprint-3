@@ -1,6 +1,5 @@
 <?php
 include 'conectar.php';
-
 $nome = $_POST['nome'];
 $usuario = $_POST['usuario'];
 $idade = $_POST['idade'];
