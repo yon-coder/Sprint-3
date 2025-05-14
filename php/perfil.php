@@ -1,50 +1,56 @@
 <?php
+// Configura a duração da sessão para 30 dias
+session_set_cookie_params(30 * 24 * 60 * 60);
+session_start();
+
 include 'conectar.php';
-$usuario = $_POST['usuario'];
-$senha = $_POST['senha'];
 
-// $sql = "SELECT * FROM user WHERE usuario='$usuario'";
+// Verifica se o usuário está logado
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$usuario = mysqli_real_escape_string($conn, $_SESSION['usuario']);
+$sql = "SELECT * FROM user WHERE usuario='$usuario'";
 $result = $conn->query($sql);
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Login - BYB</title>
+    <title>Perfil - BYB</title>
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
     <header class="holder">
-        <h1>Login</h1>
+        <h1>Perfil do Usuário</h1>
         <nav>
-            <a href="../index.html">Início</a>
+            <a href="index.html">Início</a>
+            <a href="dieta.html">Dieta</a>
+            <a href="treinos.html">Treinos</a>
+            <a href="progresso.html">Progresso</a>
+            <a href="logout.php">Sair</a>
         </nav>
     </header>
 
     <main class="conteudo">
-        <h2>Acesse sua conta</h2>
-        <!-- <form action="login.php" method="POST">
-            <input type="text" name="usuario" placeholder="Usuário" required>
-            <input type="password" name="senha" placeholder="Senha" required>
-            <button type="submit">Entrar</button>
-        </form> -->
-        <?php
-            if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        if (password_verify($senha, $row['senha'])) {
-            // $_SESSION['usuario'] = $usuario;
-            echo "Login bem-sucedido!";
-            echo "<a href='perfil.php'> Acessar conta </a>";
-        } else {
-            echo "Senha incorreta!";
-        }
-        } else {
-        echo "Usuário não encontrado!";
-        }
-        ?>
-
+        <h2>Seus Dados:</h2>
+        <div id="dados-perfil">
+            <?php
+            if ($result && $result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                echo "<p>Nome: " . htmlspecialchars($row['nome']) . "</p>";
+                echo "<p>Idade: " . htmlspecialchars($row['idade']) . "</p>";
+                echo "<p>Peso: " . htmlspecialchars($row['peso']) . " kg</p>";
+                echo "<p>Altura: " . htmlspecialchars($row['altura']) . " m</p>";
+                echo "<p>Objetivo: " . htmlspecialchars($row['objetivo']) . "</p>";
+            } else {
+                echo "<p>Erro ao carregar perfil.</p>";
+            }
+            ?>
+        </div>
     </main>
 </body>
 </html>
