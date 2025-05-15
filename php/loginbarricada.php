@@ -1,17 +1,24 @@
-<?php
+<?php 
 // Iniciar sessão de forma segura
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Conectar ao banco de dados
-include 'conectar.php';
-
-// Verificar se o usuário já está logado
-if (isset($_SESSION['account_loggedin'])) {
-    header('Location: home.php');
+// Limpar qualquer sessão anterior para evitar problemas durante o teste
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header('Location: loginbarricada.php');
     exit;
 }
+
+// Verificar se o usuário já está logado
+if (isset($_SESSION['account_loggedin']) && $_SESSION['account_loggedin'] === true) {
+    header('Location: perfil.php');
+    exit;
+}
+
+// Conectar ao banco de dados
+include 'conectar.php';
 
 // Inicializar a variável de mensagem de erro
 $error = '';
@@ -29,29 +36,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Verificar se a consulta retornou resultados
     if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    // Debug: mostrar a senha hash do banco e a digitada
-    echo "Hash no banco: " . $row['senha'] . "<br>";
-    echo "Senha digitada: " . $senha . "<br>";
+        $row = $result->fetch_assoc();
 
-    // Verificar a senha usando password_verify
-    if (password_verify($senha, $row['senha'])) {
-        $_SESSION['account_loggedin'] = true;
-        $_SESSION['usuario'] = $usuario;
-        echo "Login bem-sucedido!";
-        header('Location: perfil.php');
-        exit;
+        // Verificar a senha usando password_verify
+        if (password_verify($senha, $row['senha'])) {
+            $_SESSION['account_loggedin'] = true;
+            $_SESSION['usuario'] = $usuario;
+            header('Location: perfil.php');
+            exit;
+        } else {
+            $error = "Senha incorreta!";
+        }
     } else {
-        echo "Senha incorreta!";
-    }
-    } else {
-        echo "Usuário não encontrado!";
+        $error = "Usuário não encontrado!";
     }
 
     $stmt->close();
 }
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">

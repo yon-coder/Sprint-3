@@ -27,10 +27,10 @@ $result = $conn->query($sql);
     <header class="holder">
         <h1>Perfil do Usuário</h1>
         <nav>
-            <a href="index.html">Início</a>
-            <a href="dieta.html">Dieta</a>
-            <a href="treinos.html">Treinos</a>
-            <a href="progresso.html">Progresso</a>
+            <a href="../index.html">Início</a>
+            <a href="html/dieta.html">Dieta</a>
+            <a href="html/treinos.html">Treinos</a>
+            <a href="html/progresso.html">Progresso</a>
             <a href="logout.php">Sair</a>
         </nav>
     </header>
