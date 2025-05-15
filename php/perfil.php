@@ -28,7 +28,7 @@ $result = $conn->query($sql);
         <h1>Perfil do Usuário</h1>
         <nav>
             <a href="../index.html">Início</a>
-            <a href="html/dieta.html">Dieta</a>
+            <a href="dieta.php">Dieta</a>
             <a href="html/treinos.html">Treinos</a>
             <a href="html/progresso.html">Progresso</a>
             <a href="logout.php">Sair</a>
