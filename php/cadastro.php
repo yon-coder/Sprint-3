@@ -6,14 +6,11 @@ $idade = $_POST['idade'];
 $peso = $_POST['peso'];
 $altura = $_POST['altura'];
 $objetivo = $_POST['objetivo'];
+$sexo = $_POST['sexo'];
 $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO user (nome, usuario, idade, peso, altura, objetivo, senha) 
-        VALUES ('$nome', '$usuario', '$idade', '$peso', '$altura', '$objetivo', '$senha')";
-
-
-
-
+$sql = "INSERT INTO user (nome, usuario, idade, peso, altura, objetivo, sexo, senha) 
+        VALUES ('$nome', '$usuario', '$idade', '$peso', '$altura', '$objetivo', '$sexo', '$senha')";
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

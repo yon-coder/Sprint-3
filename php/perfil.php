@@ -46,6 +46,7 @@ $result = $conn->query($sql);
                 echo "<p>Peso: " . htmlspecialchars($row['peso']) . " kg</p>";
                 echo "<p>Altura: " . htmlspecialchars($row['altura']) . " m</p>";
                 echo "<p>Objetivo: " . htmlspecialchars($row['objetivo']) . "</p>";
+                echo "<p>Sexo: " . htmlspecialchars($row['sexo']) . "</p>";
             } else {
                 echo "<p>Erro ao carregar perfil.</p>";
             }
