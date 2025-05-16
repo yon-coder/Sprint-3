@@ -91,6 +91,7 @@ $tmb = calcular_tmb($peso, $altura, $idade, $sexo);
 $calorias = ajustar_calorias($tmb, $objetivo);
 
 echo "<h2>Dieta: {$dietaEscolhida}</h2><p>Objetivo: {$objetivo}</p><p>Calorias: ".round($calorias,1)." kcal</p>";
+echo "<br>";
 echo "<h3>Alimentos sugeridos:</h3><ul>";
 foreach ($alimentos as $alimento => $valores) {
     $descricao = classificar_alimento($valores);
@@ -100,7 +101,7 @@ echo "</ul>";
 // ... seu código atual até o final da listagem dos alimentos
 
 echo "</ul>";
-
+echo "<br>";
 // Sugestão de refeições do dia baseada na dieta escolhida
 echo "<h3>Sugestão de Refeições para o Dia:</h3>";
 
@@ -116,9 +117,20 @@ switch ($dietaEscolhida) {
         break;
 
     case '3': // com ambos
-        echo "<p><strong>Almoço:</strong> Salmão e Carne Vermelha grelhados, Arroz Integral e Salada de Abacate com Azeite.</p>";
+        echo "<p><strong>Almoço:</strong> Salmão ou Carne Vermelha grelhados, Arroz Integral e Salada de Abacate com Azeite.</p>";
         echo "<p><strong>Jantar:</strong> Peito de Frango e Tofu com Batata Doce e legumes.</p>";
         break;
 }
-
+echo "<br>";
+echo "<h3>Observações:</h3>";
+if ($objetivo === 'ganhar') {
+    echo "<p>Para ganhar massa muscular, é importante consumir mais calorias do que gasta. Considere aumentar a ingestão de proteínas e carboidratos.</p>";
+} elseif ($objetivo === 'perder') {
+    echo "<p>Para perder peso, é importante consumir menos calorias do que gasta. Considere aumentar a ingestão de proteínas e reduzir carboidratos.</p>";
+} else {
+    echo "<p>Mantenha uma dieta equilibrada e saudável, com uma variedade de alimentos.</p>";
+}; 
+echo "<br>";
+echo "<h3>Recomendações Finais:</h3>";
+echo "<p>A BYB recomenda a consulta de um nutricionista para um plano alimentar personalizado.</p>";
 ?>
