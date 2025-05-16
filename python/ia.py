@@ -1,65 +1,28 @@
-import json
+import sys
+import matplotlib.pyplot as plt
 
-def calcular_tmb(peso, altura, idade, sexo):
-    if sexo == 'masculino':
-        tmb = 88.36 + (13.4 * peso) + (4.8 * altura * 100) - (5.7 * idade)
-    else:
-        tmb = 447.6 + (9.2 * peso) + (3.1 * altura * 100) - (4.3 * idade)
-    return tmb
+# Recebe os parâmetros de peso e altura
+peso_atual = float(sys.argv[1])
+altura_atual = float(sys.argv[2])
 
-def calcular_calorias(tmb, objetivo):
-    if objetivo == 'ganhar':
-        return int(tmb * 1.2)  # Calorias para ganho de massa
-    elif objetivo == 'perder':
-        return int(tmb * 0.8)  # Calorias para perda de peso
-    else:
-        return int(tmb * 1.0)  # Calorias para manutenção
+# Dados anteriores (simulados para exemplo, mas você pode alterar conforme necessário)
+peso_anterior = 70.0  # Substituir pelo valor inicial
+altura_anterior = 1.75  # Substituir pelo valor inicial
 
-def distribuir_macronutrientes(calorias, objetivo):
-    if objetivo == 'ganhar':
-        proteinas = 2.2  # g por kg
-        carboidratos = 5  # g por kg
-        gorduras = 1  # g por kg
-    elif objetivo == 'perder':
-        proteinas = 2.5
-        carboidratos = 2.5
-        gorduras = 0.8
-    else:
-        proteinas = 2.0
-        carboidratos = 3.5
-        gorduras = 1
+# Calcula o IMC
+imc_anterior = peso_anterior / (altura_anterior ** 2)
+imc_atual = peso_atual / (altura_atual ** 2)
 
-    return {"proteinas": proteinas, "carboidratos": carboidratos, "gorduras": gorduras}
+# Evolução percentual
+evolucao = ((imc_atual - imc_anterior) / imc_anterior) * 100
 
-def gerar_treino(objetivo):
-    if objetivo == 'ganhar':
-        treino = "Treino de força 5x por semana com foco em hipertrofia."
-    elif objetivo == 'perder':
-        treino = "Treino HIIT e musculação 4x por semana."
-    else:
-        treino = "Treino funcional 3x por semana para manutenção."
-    return treino
+# Gerando o gráfico
+plt.figure(figsize=(6, 4))
+plt.plot(['Anterior', 'Atual'], [imc_anterior, imc_atual], marker='o', color='blue', linestyle='-', linewidth=2)
+plt.title('Evolução do IMC')
+plt.xlabel('Período')
+plt.ylabel('IMC')
+plt.grid(True)
+plt.savefig('grafico.png')
 
-def gerar_dieta(peso, altura, idade, sexo, objetivo):
-    tmb = calcular_tmb(peso, altura, idade, sexo)
-    calorias = calcular_calorias(tmb, objetivo)
-    macros = distribuir_macronutrientes(calorias, objetivo)
-
-    return {
-        "calorias_diarias": calorias,
-        "proteinas": round(macros["proteinas"] * peso),
-        "carboidratos": round(macros["carboidratos"] * peso),
-        "gorduras": round(macros["gorduras"] * peso),
-    }
-
-# Dados de exemplo (poderiam vir do banco de dados)
-# peso = 70
-# altura = 1.75
-# idade = 25
-# sexo = 'masculino'
-# objetivo = 'ganhar'
-
-# dieta = gerar_dieta(peso, altura, idade, sexo, objetivo)
-# treino = gerar_treino(objetivo)
-
-# print(json.dumps({"dieta": dieta, "treino": treino}, indent=4))
+print(f"Evolução do IMC: {evolucao:.2f}%")

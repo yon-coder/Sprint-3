@@ -19,7 +19,7 @@ if (!isset($_SESSION['usuario'])) {
         <nav>
             <a href="perfil.php">Perfil</a>
             <a href="html/treinos.html">Treinos</a>
-            <a href="html/progresso.html">Progresso</a>
+            <a href="progresso.php">Progresso</a>
             <a href="logout.php">Sair</a>
         </nav>
     </header>
