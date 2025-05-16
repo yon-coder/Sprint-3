@@ -23,59 +23,38 @@ $row = $result->fetch_assoc();
 $objetivo = $row['objetivo'];
 $sexo = strtolower($row['sexo']);
 
-function ajustarCargaReps($cargaBase, $repsBase, $sexo, $objetivo) {
-    if ($sexo === 'feminino') {
-        $cargaBase = round($cargaBase * 0.7);
-        $repsBase = round($repsBase * 1.2);
-    }
-
-    switch ($objetivo) {
-        case 'ganhar':
-            $carga = $cargaBase;
-            $reps = $repsBase;
-            break;
-        case 'perder':
-            $carga = round($cargaBase * 0.7);
-            $reps = round($repsBase * 1.5);
-            break;
-        case 'manter':
-            $carga = round($cargaBase * 0.85);
-            $reps = round($repsBase * 1.1);
-            break;
-        default:
-            $carga = $cargaBase;
-            $reps = $repsBase;
-    }
-    return ['carga' => $carga, 'reps' => $reps];
-}
-
 $treinos = [
     'Perna' => [
-        ['exercicio' => 'Agachamento Livre', 'carga' => 80, 'reps' => 8],
-        ['exercicio' => 'Leg Press', 'carga' => 100, 'reps' => 10],
-        ['exercicio' => 'Cadeira Extensora', 'carga' => 50, 'reps' => 12],
-        ['exercicio' => 'Levantamento Terra', 'carga' => 90, 'reps' => 8],
-        ['exercicio' => 'Afundo com Halteres', 'carga' => 30, 'reps' => 10],
-        ['exercicio' => 'Stiff', 'carga' => 70, 'reps' => 10],
+        ['exercicio' => 'Agachamento Livre', 'series' => '4x12', 'dica' => 'Mantenha a carga constante para focar na execução.'],
+        ['exercicio' => 'Leg Press', 'series' => '4x10', 'dica' => 'Progressão de carga a cada série.'],
+        ['exercicio' => 'Cadeira Extensora', 'series' => '3x15', 'dica' => 'Concentre-se na contração máxima.'],
+        ['exercicio' => 'Levantamento Terra', 'series' => '4x8', 'dica' => 'Aumente a carga gradativamente.'],
+        ['exercicio' => 'Afundo com Halteres', 'series' => '3x12', 'dica' => 'Priorize o equilíbrio e a amplitude.'],
+        ['exercicio' => 'Stiff', 'series' => '4x10', 'dica' => 'Foque na descida controlada.'],
+        ['exercicio' => 'Leg Curl', 'series' => '3x12', 'dica' => 'Mantenha a carga moderada para evitar lesões.'],
+        ['exercicio' => 'Cadeira Adutora', 'series' => '3x15', 'dica' => 'Movimento lento e controlado.'],
+        ['exercicio' => 'Panturrilha no Leg Press', 'series' => '4x15', 'dica' => 'Faça o movimento completo para melhor ativação.'],
     ],
     'Costas/Antebraço/Bíceps' => [
-        ['exercicio' => 'Puxada na Barra Fixa', 'carga' => 0, 'reps' => 8],
-        ['exercicio' => 'Remada Curvada', 'carga' => 60, 'reps' => 10],
-        ['exercicio' => 'Rosca Direta', 'carga' => 25, 'reps' => 12],
-        ['exercicio' => 'Pulley Frente', 'carga' => 40, 'reps' => 10],
-        ['exercicio' => 'Rosca Martelo', 'carga' => 20, 'reps' => 12],
-        ['exercicio' => 'Rosca Inversa', 'carga' => 15, 'reps' => 12],
+        ['exercicio' => 'Puxada na Barra Fixa', 'series' => '3x8', 'dica' => 'Foque na execução correta.'],
+        ['exercicio' => 'Remada Curvada', 'series' => '4x10', 'dica' => 'Mantenha a postura reta durante o movimento.'],
+        ['exercicio' => 'Pulley Frente', 'series' => '3x12', 'dica' => 'Progressão leve a cada série.'],
+        ['exercicio' => 'Rosca Direta', 'series' => '3x15', 'dica' => 'Use carga moderada para manter o controle.'],
+        ['exercicio' => 'Rosca Martelo', 'series' => '3x12', 'dica' => 'Evite balanço do corpo.'],
+        ['exercicio' => 'Rosca Inversa', 'series' => '3x12', 'dica' => 'Controle a descida para maior eficiência.'],
+        ['exercicio' => 'Rosca Concentrada', 'series' => '3x10', 'dica' => 'Use carga leve para manter a forma.'],
     ],
     'Peito/Ombro/Tríceps' => [
-        ['exercicio' => 'Supino Reto', 'carga' => 70, 'reps' => 8],
-        ['exercicio' => 'Desenvolvimento com Halteres', 'carga' => 20, 'reps' => 10],
-        ['exercicio' => 'Tríceps Pulley', 'carga' => 30, 'reps' => 12],
-        ['exercicio' => 'Crucifixo Inclinado', 'carga' => 25, 'reps' => 10],
-        ['exercicio' => 'Fly Pec Deck', 'carga' => 40, 'reps' => 12],
-        ['exercicio' => 'Flexão de Braço', 'carga' => 0, 'reps' => 15],
-        ['exercicio' => 'Elevação Lateral', 'carga' => 15, 'reps' => 12],
-        ['exercicio' => 'Desenvolvimento Militar', 'carga' => 50, 'reps' => 8],
-        ['exercicio' => 'Tríceps Testa', 'carga' => 20, 'reps' => 12],
+        ['exercicio' => 'Supino Reto', 'series' => '4x8', 'dica' => 'Mantenha a carga estável em todas as séries.'],
+        ['exercicio' => 'Supino Inclinado', 'series' => '3x10', 'dica' => 'Progrida na última série se sentir conforto.'],
+        ['exercicio' => 'Desenvolvimento com Halteres', 'series' => '4x12', 'dica' => 'Amplitude total para melhor ativação.'],
+        ['exercicio' => 'Crucifixo Inclinado', 'series' => '3x15', 'dica' => 'A carga deve permitir um movimento amplo.'],
+        ['exercicio' => 'Fly Pec Deck', 'series' => '3x12', 'dica' => 'Movimento lento e controlado.'],
+        ['exercicio' => 'Elevação Lateral', 'series' => '3x12', 'dica' => 'Evite movimentos bruscos.'],
+        ['exercicio' => 'Desenvolvimento Militar', 'series' => '4x8', 'dica' => 'Aumente a carga nas últimas séries.'],
+        ['exercicio' => 'Flexão de Braço', 'series' => '3x15', 'dica' => 'Foque na postura correta.'],
+        ['exercicio' => 'Tríceps Pulley', 'series' => '3x12', 'dica' => 'Movimento completo para máximo estímulo.'],
+        ['exercicio' => 'Tríceps Testa', 'series' => '3x10', 'dica' => 'A carga deve ser leve para proteger as articulações.'],
     ],
 ];
 ?>
@@ -92,24 +71,23 @@ $treinos = [
             background-color: #007bff;
             color: white;
             padding: 10px;
-            margin-top: 10px;
+            margin: 5px 0;
             border-radius: 5px;
             user-select: none;
         }
         .treino-conteudo {
             display: none;
-            margin-top: 5px;
+            margin: 5px 0;
             padding: 10px;
             border: 1px solid #007bff;
             border-radius: 5px;
             background-color: #f0f8ff;
         }
         .exercicio {
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
-        .exercicio b {
-            display: inline-block;
-            width: 200px;
+        .dica {
+            color: #555;
         }
     </style>
 </head>
@@ -126,23 +104,18 @@ $treinos = [
 
     <main class="conteudo">
         <h2>Objetivo: <b><?php echo ucfirst($objetivo); ?></b></h2>
-        <p>Sexo: <b><?php echo ucfirst($sexo); ?></b></p>
 
         <?php foreach ($treinos as $grupo => $exercicios): ?>
-            <div class="treino-bloco">
-                <div class="treino-titulo" onclick="toggleConteudo(this)">
-                    <?php echo $grupo; ?>
-                </div>
-                <div class="treino-conteudo">
-                    <?php foreach ($exercicios as $ex): 
-                        $ajuste = ajustarCargaReps($ex['carga'], $ex['reps'], $sexo, $objetivo);
-                        $cargaExib = $ajuste['carga'] > 0 ? $ajuste['carga'] . " kg" : "Peso corporal";
-                    ?>
-                        <div class="exercicio">
-                            <b><?php echo $ex['exercicio']; ?></b> — <?php echo $ajuste['reps']; ?> repetições, carga: <?php echo $cargaExib; ?>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
+            <div class="treino-titulo" onclick="toggleConteudo(this)">
+                <?php echo $grupo; ?>
+            </div>
+            <div class="treino-conteudo">
+                <?php foreach ($exercicios as $ex): ?>
+                    <div class="exercicio">
+                        <b><?php echo $ex['exercicio']; ?> (<?php echo $ex['series']; ?>)</b> 
+                        <p class="dica"><?php echo $ex['dica']; ?></p>
+                    </div>
+                <?php endforeach; ?>
             </div>
         <?php endforeach; ?>
     </main>
