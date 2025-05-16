@@ -85,6 +85,10 @@ $conn->close();
 
             <button type="submit">Entrar</button>
         </form>
+            <br><h2>Não tem uma? Crie:</h2>
+        <form action="../html/cadastro.html" method="post">
+            <button type="submit">Cadastrar</button>
+        </form>
 
         <!-- Exibição de mensagens de erro -->
         <?php if (!empty($error)) : ?>
