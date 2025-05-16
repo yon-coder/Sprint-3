@@ -6,7 +6,7 @@
 </head>
 <body>
     <header class="holder">
-        <h1>Perfil do Usuário</h1>
+        <h1>Progresso</h1>
         <nav>
             <a href="perfil.php">Perfil</a>
             <a href="dieta.php">Dieta</a>
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Progresso - BYB</title>
 </head>
 <body>
-    <h2>Progresso do Usuário</h2>
+    
 
     <h3>Dados Antigos:</h3>
     <p>Altura: <?= $altura_antiga ?> m</p>

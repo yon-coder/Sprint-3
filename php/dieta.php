@@ -10,7 +10,7 @@ if (!isset($_SESSION['usuario'])) {
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
-    <title>Escolha sua dieta</title>
+    <title>Dieta - BYB</title>
     <link rel="stylesheet" href="../css/estilo.css" >
 </head>
 <body>
@@ -23,9 +23,9 @@ if (!isset($_SESSION['usuario'])) {
             <a href="logout.php">Sair</a>
         </nav>
     </header>
-    <h1>Escolha sua dieta</h1>
+    
     <form action="salvar_dieta.php" method="post">
-    <label>Escolha sua dieta:</label>
+    <h1><label>Escolha sua dieta:</label></h1>
     <select name="dieta">
         <option value="1">Sem frutos do mar</option>
         <option value="2">Sem carne vermelha</option>
