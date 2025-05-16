@@ -18,7 +18,7 @@ if (!isset($_SESSION['usuario'])) {
         <h1>Dieta</h1>
         <nav>
             <a href="perfil.php">Perfil</a>
-            <a href="html/treinos.html">Treinos</a>
+            <a href="treinos.php">Treinos</a>
             <a href="progresso.php">Progresso</a>
             <a href="logout.php">Sair</a>
         </nav>
