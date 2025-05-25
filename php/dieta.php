@@ -23,16 +23,17 @@ if (!isset($_SESSION['usuario'])) {
             <a href="logout.php">Sair</a>
         </nav>
     </header>
-    
-    <form action="salvar_dieta.php" method="post">
-    <h1><label>Escolha sua dieta:</label></h1>
-    <select name="dieta">
-        <option value="1">Sem frutos do mar</option>
-        <option value="2">Sem carne vermelha</option>
-        <option value="3">Tudo incluso</option>
-    </select>
-    <button type="submit">Salvar Dieta</button>
-</form>
+    <main class="conteudo">
+        <form action="salvar_dieta.php" method="post" style="max-width:400px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
+            <h2 style="font-size:1.5em;letter-spacing:1px;margin-bottom:18px;text-shadow:0 2px 8px #fbc2eb99;">Escolha sua dieta:</h2>
+            <select name="dieta" required>
+                <option value="1">Sem frutos do mar</option>
+                <option value="2">Sem carne vermelha</option>
+                <option value="3">Tudo incluso</option>
+            </select>
+            <button type="submit">Ver Dieta</button>
+        </form>
+    </main>
 
 </body>
 </html>

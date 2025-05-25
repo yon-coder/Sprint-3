@@ -71,28 +71,26 @@ $conn->close();
             <a href="../index.html">Início</a>
         </nav>
     </header>
-
     <main class="conteudo">
-        <h2>Acesse sua conta</h2>
-
+        <h2 style="font-size:2em;letter-spacing:1px;margin-bottom:24px;text-shadow:0 2px 8px #fbc2eb99;">Acesse sua conta</h2>
         <!-- Formulário de Login -->
-        <form action="" method="POST">
-            <label for="usuario">Usuário</label>
+        <form action="" method="POST" style="max-width:350px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
+            
             <input type="text" name="usuario" id="usuario" placeholder="Usuário" required>
 
-            <label for="senha">Senha</label>
+            
             <input type="password" name="senha" id="senha" placeholder="Senha" required>
 
             <button type="submit">Entrar</button>
         </form>
-            <br><h2>Não tem uma? Crie:</h2>
-        <form action="../html/cadastro.html" method="post">
+        <h2 style="font-size:1.2em;margin:32px 0 12px 0;text-shadow:0 2px 8px #a1c4fd55;">Não tem uma? Crie:</h2>
+        <form action="../html/cadastro.html" method="post" style="max-width:350px;margin:0 auto;">
             <button type="submit">Cadastrar</button>
         </form>
 
         <!-- Exibição de mensagens de erro -->
         <?php if (!empty($error)) : ?>
-            <p style="color: red;"><?= $error ?></p>
+            <p style="color: #d7263d;font-weight:bold;"><?= $error ?></p>
         <?php endif; ?>
 
     </main>

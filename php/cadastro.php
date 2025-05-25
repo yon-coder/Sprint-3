@@ -26,13 +26,17 @@ $sql = "INSERT INTO user (nome, usuario, idade, peso, altura, objetivo, sexo, se
             <a href="../index.html">Início</a>
         </nav>
     </header>
-    <?php
-    if ($conn->query($sql) === TRUE) {
-    echo "Cadastro realizado com sucesso!";
-    } else {
-    echo "Erro ao cadastrar: " . $conn->error;
-    }
-    ?>
+    <main class="conteudo">
+        <?php
+        if ($conn->query($sql) === TRUE) {
+            echo '<div style="color:#38b000;font-size:1.3em;font-weight:bold;margin-bottom:16px;">Cadastro realizado com sucesso!</div>';
+        } else {
+            echo '<div style="color:#d7263d;font-size:1.1em;font-weight:bold;margin-bottom:16px;">Erro ao cadastrar: ' . $conn->error . '</div>';
+        }
+        ?>
+        <a href="../html/login.html" class="botoes"><button>Ir para Login</button></a>
+    </main>
+</body>
 </html>
 <?php
 $conn->close();

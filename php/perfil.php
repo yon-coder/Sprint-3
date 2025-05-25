@@ -48,50 +48,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="logout.php">Sair</a>
         </nav>
     </header>
-
-    <main class="conteudo">
-        <h2>Seus Dados:</h2>
-        <div id="dados-perfil">
-            <?php
-            if ($result && $result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                echo "<p>Nome: " . htmlspecialchars($row['nome']) . "</p>";
-                echo "<p>Idade: " . htmlspecialchars($row['idade']) . "</p>";
-                echo "<p>Peso: " . htmlspecialchars($row['peso']) . " kg</p>";
-                echo "<p>Altura: " . htmlspecialchars($row['altura']) . " m</p>";
-                echo "<p>Objetivo: " . htmlspecialchars($row['objetivo']) . "</p>";
-                echo "<p>Sexo: " . htmlspecialchars($row['sexo']) . "</p>";
-            } else {
-                echo "<p>Erro ao carregar perfil.</p>";
-            }
-            ?>
+    <main class="conteudo" style="max-width:500px;margin:0 auto;">
+        <h2 style="font-size:1.5em;letter-spacing:1px;margin-bottom:18px;text-shadow:0 2px 8px #fbc2eb99;">Seus Dados</h2>
+        <?php
+        if ($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            echo "<p>Nome: <strong>" . htmlspecialchars($row['nome']) . "</strong></p>";
+            echo "<p>Idade: <strong>" . htmlspecialchars($row['idade']) . "</strong></p>";
+            echo "<p>Peso: <strong>" . htmlspecialchars($row['peso']) . " kg</strong></p>";
+            echo "<p>Altura: <strong>" . htmlspecialchars($row['altura']) . " m</strong></p>";
+            echo "<p>Objetivo: <strong>" . htmlspecialchars($row['objetivo']) . "</strong></p>";
+            echo "<p>Sexo: <strong>" . htmlspecialchars($row['sexo']) . "</strong></p>";
+        } else {
+            echo "<p>Erro ao carregar perfil.</p>";
+        }
+        ?>
+        <div style="display:flex;justify-content:center;gap:10px;">
+            <button id="btn-atualizar" style="padding:6px 18px;font-size:0.95em;min-width:90px;max-width:120px;">Atualizar Objetivo</button>
         </div>
-
-        <button onclick="mostrarFormulario()">Atualizar Objetivo</button>
-
-        <div id="form-objetivo" style="display: none; margin-top: 10px;">
-            <form method="POST" action="">
-                <label for="objetivo">Escolha o novo objetivo:</label>
-                <select name="objetivo" id="objetivo" required>
-                    <option value="ganhar">Ganhar Massa</option>
-                    <option value="perder">Perder Peso</option>
-                    <option value="manter">Manter Peso</option>
-                </select>
-                <button type="submit">Atualizar</button>
-            </form>
-        </div>
+        <form id="form-objetivo" method="POST" action="" style="display:none;max-width:350px;margin:10px auto 0 auto;flex-direction:column;gap:10px;align-items:center;background:rgba(255,255,255,0.4);border-radius:10px;padding:18px 16px;box-shadow:0 2px 8px #a1c4fd22;">
+            <label for="objetivo">Escolha o novo objetivo:</label>
+            <select name="objetivo" id="objetivo" required style="max-width:200px;">
+                <option value="ganhar">Ganhar Massa</option>
+                <option value="perder">Perder Peso</option>
+                <option value="manter">Manter Peso</option>
+            </select>
+            <button type="submit" style="align-self:center;padding:6px 18px;font-size:0.95em;min-width:90px;max-width:120px;">Atualizar</button>
+        </form>
     </main>
 
     <script>
-        function mostrarFormulario() {
+        document.getElementById('btn-atualizar').onclick = function() {
             var form = document.getElementById("form-objetivo");
             if (form.style.display === "none") {
                 form.style.display = "block";
             } else {
                 form.style.display = "none";
             }
-        }
-
+        };
         window.addEventListener('load', function() {
             <?php if (isset($_SESSION['mensagem'])): ?>
                 if (!sessionStorage.getItem('reloadDone')) {

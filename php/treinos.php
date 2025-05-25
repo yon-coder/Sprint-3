@@ -93,38 +93,69 @@ $treinos = [
 </head>
 <body>
     <header class="holder">
-        <h1>Treinos Personalizados</h1>
+        <h1>Treinos</h1>
         <nav>
-            <a href="dieta.php">Dieta</a>
             <a href="perfil.php">Perfil</a>
+            <a href="dieta.php">Dieta</a>
             <a href="progresso.php">Progresso</a>
             <a href="logout.php">Sair</a>
         </nav>
     </header>
-
-    <main class="conteudo">
-        <h2>Objetivo: <b><?php echo ucfirst($objetivo); ?></b></h2>
-
-        <?php foreach ($treinos as $grupo => $exercicios): ?>
-            <div class="treino-titulo" onclick="toggleConteudo(this)">
+    <main class="conteudo" style="max-width:700px;margin:0 auto;">
+        <h2 style="font-size:1.5em;letter-spacing:1px;margin-bottom:24px;text-shadow:0 2px 8px #43e97b99;">Objetivo: <b><?php echo ucfirst($objetivo); ?></b></h2>
+        <div id="botoes-treino" style="display:flex;flex-wrap:wrap;gap:18px 24px;justify-content:center;margin-bottom:32px;">
+        <?php $i=0; foreach ($treinos as $grupo => $exercicios): ?>
+            <button class="treino-titulo" data-idx="<?php echo $i; ?>" style="background:linear-gradient(90deg,#43e97b 0%,#38f9d7 100%);color:#fff;font-weight:bold;padding:14px 32px;font-size:1.1em;border:none;border-radius:16px;box-shadow:0 2px 12px #43e97b44,0 1.5px 8px #38f9d733;transition:box-shadow 0.3s,background 0.3s,transform 0.2s;cursor:pointer;outline:none;min-width:180px;letter-spacing:1px;">
                 <?php echo $grupo; ?>
-            </div>
-            <div class="treino-conteudo">
+            </button>
+        <?php $i++; endforeach; ?>
+        </div>
+        <?php $i=0; foreach ($treinos as $grupo => $exercicios): ?>
+            <div class="treino-conteudo" data-idx="<?php echo $i; ?>" style="display:none;background:rgba(255,255,255,0.25);backdrop-filter:blur(6px);border-radius:18px;box-shadow:0 4px 24px #43e97b22;margin-bottom:28px;padding:28px 24px 18px 24px;max-width:600px;margin-left:auto;margin-right:auto;">
+                <h3 style="font-size:1.25em;color:#43e97b;margin-bottom:18px;text-align:center;text-shadow:0 2px 8px #38f9d799;letter-spacing:1px;">Treino de <?php echo $grupo; ?></h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;">
                 <?php foreach ($exercicios as $ex): ?>
-                    <div class="exercicio">
-                        <b><?php echo $ex['exercicio']; ?> (<?php echo $ex['series']; ?>)</b> 
-                        <p class="dica"><?php echo $ex['dica']; ?></p>
+                    <div class="exercicio" style="background:rgba(255,255,255,0.55);border-radius:12px;padding:14px 12px 10px 16px;box-shadow:0 2px 8px #43e97b22;display:flex;flex-direction:column;align-items:flex-start;">
+                        <span style="font-weight:bold;font-size:1.08em;color:#267f4a;letter-spacing:0.5px;">
+                            <?php echo $ex['exercicio']; ?> <span style="color:#145c36;font-size:0.98em;">(<?php echo $ex['series']; ?>)</span>
+                        </span>
+                        <span class="dica" style="color:#267f4a;font-size:0.97em;margin-top:4px;opacity:0.85;">💡 <?php echo $ex['dica']; ?></span>
                     </div>
                 <?php endforeach; ?>
+                </div>
             </div>
-        <?php endforeach; ?>
+        <?php $i++; endforeach; ?>
     </main>
-
     <script>
-        function toggleConteudo(element) {
-            const conteudo = element.nextElementSibling;
-            conteudo.style.display = (conteudo.style.display === "block") ? "none" : "block";
-        }
+        // Corrigido: ao clicar, mostra/oculta apenas o treino correspondente, mantendo os botões visíveis
+        const botoes = document.querySelectorAll('.treino-titulo');
+        const conteudos = document.querySelectorAll('.treino-conteudo');
+        botoes.forEach((btn, idx) => {
+            btn.addEventListener('click', function() {
+                const content = document.querySelector('.treino-conteudo[data-idx="'+idx+'"]');
+                if(content.style.display === 'block') {
+                    content.style.display = 'none';
+                    btn.classList.remove('ativo');
+                } else {
+                    conteudos.forEach((c, i) => {
+                        c.style.display = 'none';
+                        botoes[i].classList.remove('ativo');
+                    });
+                    content.style.display = 'block';
+                    btn.classList.add('ativo');
+                }
+            });
+            btn.addEventListener('mouseover', function(){
+                btn.style.background = 'linear-gradient(90deg,#38f9d7 0%,#43e97b 100%)';
+                btn.style.color = '#267f4a';
+                btn.style.transform = 'scale(1.04)';
+            });
+            btn.addEventListener('mouseout', function(){
+                btn.style.background = btn.classList.contains('ativo') ? 'linear-gradient(90deg,#38f9d7 0%,#43e97b 100%)' : 'linear-gradient(90deg,#43e97b 0%,#38f9d7 100%)';
+                btn.style.color = btn.classList.contains('ativo') ? '#267f4a' : '#fff';
+                btn.style.transform = 'scale(1)';
+            });
+        });
     </script>
 </body>
 </html>
