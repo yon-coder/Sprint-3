@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <title>Sua Dieta - BYB</title>
     <link rel="stylesheet" href="../css/estilo.css">
+    <link rel=icon type="image/png" href="../imgs/green_pokeball_by_jormxdos_dfgb82o-fullview.png">
 </head>
 <body>
     <header class="holder">
