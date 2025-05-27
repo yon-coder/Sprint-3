@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <header class="holder">
-        <h1>Progresso</h1>
+        <h1 style="font-size:var(--font-title);">Progresso</h1>
         <nav>
             <a href="perfil.php">Perfil</a>
             <a href="dieta.php">Dieta</a>
@@ -47,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="logout.php">Sair</a>
         </nav>
     </header>
-    <main class="conteudo">
-        <h3>Dados Antigos:</h3>
+    <main class="conteudo" style="max-width:var(--container-max-width);padding:var(--container-padding);">
+        <h3 style="font-size:var(--font-subtitle);">Dados Antigos:</h3>
         <p>Altura: <?= isset($altura_antiga) ? $altura_antiga : '-' ?> m</p>
         <p>Peso: <?= isset($peso_antigo) ? $peso_antigo : '-' ?> kg</p>
         <form method="POST" style="max-width:400px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
@@ -58,8 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="peso_atual">Peso (kg):</label>
             <input type="text" name="peso_atual" required value="<?= htmlspecialchars($peso_atual) ?>">
             <div style="display:flex;gap:10px;justify-content:center;">
-                <button type="submit" name="calcular">Calcular Progresso</button>
-                <button type="submit" name="atualizar" style="background:linear-gradient(90deg,#43e97b 0%,#38f9d7 100%);color:#fff;font-weight:bold;">Atualizar Progresso</button>
+                <button type="submit" name="calcular" style="font-size:var(--button-font-size);padding:var(--button-padding);border-radius:var(--button-radius);">Calcular Progresso</button>
+                <button type="submit" name="atualizar" style="font-size:var(--button-font-size);padding:var(--button-padding);border-radius:var(--button-radius);background:linear-gradient(90deg,#43e97b 0%,#38f9d7 100%);color:#fff;font-weight:bold;">Atualizar Progresso</button>
             </div>
         </form>
         <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>

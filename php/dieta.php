@@ -24,8 +24,8 @@ if (!isset($_SESSION['usuario'])) {
             <a href="logout.php">Sair</a>
         </nav>
     </header>
-    <main class="conteudo">
-        <form action="salvar_dieta.php" method="post" style="max-width:400px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
+    <main class="conteudo" style="max-width:var(--container-max-width);padding:var(--container-padding);">
+        <form action="salvar_dieta.php" method="post" style="max-width:var(--container-max-width);margin:0 auto;display:flex;flex-direction:column;gap:10px;">
             <h2 style="font-size:1.5em;letter-spacing:1px;margin-bottom:18px;text-shadow:0 2px 8px #fbc2eb99;">Escolha sua dieta:</h2>
             <select name="dieta" required>
                 <option value="1">Sem frutos do mar</option>

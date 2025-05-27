@@ -126,6 +126,46 @@ header nav a:hover::after {
     transform: scaleX(1);
 }
 
+:root {
+    --font-base: 1.08em;
+    --font-title: 2em;
+    --font-subtitle: 1.25em;
+    --container-max-width: 950px;
+    --container-padding: 40px 24px;
+    --button-font-size: 1em;
+    --button-padding: 10px 28px;
+    --button-radius: 10px;
+}
+
+body, input, select, button {
+    font-size: var(--font-base);
+}
+
+h1, header.holder h1 {
+    font-size: var(--font-title) !important;
+}
+
+h2 {
+    font-size: var(--font-subtitle) !important;
+}
+
+main.conteudo {
+    max-width: var(--container-max-width);
+    padding: var(--container-padding);
+}
+
+.botoes button, button {
+    font-size: var(--button-font-size) !important;
+    padding: var(--button-padding) !important;
+    border-radius: var(--button-radius) !important;
+}
+
+input, select {
+    font-size: var(--font-base);
+    padding: 12px 10px;
+    border-radius: 8px;
+}
+
 .botoes button, button {
     margin-left: 10px;
     padding: 10px 24px;

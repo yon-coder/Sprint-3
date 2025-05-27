@@ -94,7 +94,7 @@ $treinos = [
 </head>
 <body>
     <header class="holder">
-        <h1>Treinos</h1>
+        <h1 style="font-size:var(--font-title);">Treinos</h1>
         <nav>
             <a href="perfil.php">Perfil</a>
             <a href="dieta.php">Dieta</a>
@@ -102,11 +102,11 @@ $treinos = [
             <a href="logout.php">Sair</a>
         </nav>
     </header>
-    <main class="conteudo" style="max-width:700px;margin:0 auto;">
-        <h2 style="font-size:1.5em;letter-spacing:1px;margin-bottom:24px;text-shadow:0 2px 8px #43e97b99;">Objetivo: <b><?php echo ucfirst($objetivo); ?></b></h2>
+    <main class="conteudo" style="max-width:var(--container-max-width);padding:var(--container-padding);">
+        <h2 style="font-size:var(--font-subtitle);letter-spacing:1px;margin-bottom:24px;text-shadow:0 2px 8px #43e97b99;">Objetivo: <b><?php echo ucfirst($objetivo); ?></b></h2>
         <div id="botoes-treino" style="display:flex;flex-wrap:wrap;gap:18px 24px;justify-content:center;margin-bottom:32px;">
         <?php $i=0; foreach ($treinos as $grupo => $exercicios): ?>
-            <button class="treino-titulo" data-idx="<?php echo $i; ?>" style="background:linear-gradient(90deg,#43e97b 0%,#38f9d7 100%);color:#fff;font-weight:bold;padding:14px 32px;font-size:1.1em;border:none;border-radius:16px;box-shadow:0 2px 12px #43e97b44,0 1.5px 8px #38f9d733;transition:box-shadow 0.3s,background 0.3s,transform 0.2s;cursor:pointer;outline:none;min-width:180px;letter-spacing:1px;">
+            <button class="treino-titulo" data-idx="<?php echo $i; ?>" style="font-size:var(--button-font-size);padding:var(--button-padding);border-radius:var(--button-radius);background:linear-gradient(90deg,#43e97b 0%,#38f9d7 100%);color:#fff;font-weight:bold;min-width:180px;letter-spacing:1px;">
                 <?php echo $grupo; ?>
             </button>
         <?php $i++; endforeach; ?>

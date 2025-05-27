@@ -8,12 +8,12 @@
 </head>
 <body>
     <header class="holder">
-        <h1>Cadastro</h1>
+        <h1 style="font-size:var(--font-title);">Cadastro</h1>
         <nav>
             <a href="../index.html">Início</a>
         </nav>
     </header>
-    <main class="conteudo">
+    <main class="conteudo" style="max-width:var(--container-max-width);padding:var(--container-padding);">
         <h2 style="font-size:2em;letter-spacing:1px;margin-bottom:24px;text-shadow:0 2px 8px #fbc2eb99;">Crie sua conta</h2>
         <form action="../php/cadastro.php" method="POST" style="max-width:400px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
             <input type="text" name="nome" id="nome" placeholder="Nome" required>
@@ -33,7 +33,7 @@
                 <option value="feminino">Feminino</option>
             </select>
             <input type="password" name="senha" placeholder="Senha" required>
-            <button type="submit">Cadastrar</button>
+            <button style="font-size:var(--button-font-size);padding:var(--button-padding);border-radius:var(--button-radius);">Cadastrar</button>
         </form>
         <h2 style="font-size:1.2em;margin:32px 0 12px 0;text-shadow:0 2px 8px #a1c4fd55;">Já tem uma conta? Faça login:</h2>
         <form action="login.html" method="get" style="max-width:350px;margin:0 auto;">

@@ -67,22 +67,18 @@ $conn->close();
 </head>
 <body>
     <header class="holder">
-        <h1>Login</h1>
+        <h1 style="font-size:var(--font-title);">Login</h1>
         <nav>
             <a href="../index.html">Início</a>
         </nav>
     </header>
-    <main class="conteudo">
+    <main class="conteudo" style="max-width:var(--container-max-width);padding:var(--container-padding);">
         <h2 style="font-size:2em;letter-spacing:1px;margin-bottom:24px;text-shadow:0 2px 8px #fbc2eb99;">Acesse sua conta</h2>
         <!-- Formulário de Login -->
         <form action="" method="POST" style="max-width:350px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
-            
             <input type="text" name="usuario" id="usuario" placeholder="Usuário" required>
-
-            
             <input type="password" name="senha" id="senha" placeholder="Senha" required>
-
-            <button type="submit">Entrar</button>
+            <button style="font-size:var(--button-font-size);padding:var(--button-padding);border-radius:var(--button-radius);">Entrar</button>
         </form>
         <h2 style="font-size:1.2em;margin:32px 0 12px 0;text-shadow:0 2px 8px #a1c4fd55;">Não tem uma? Crie:</h2>
         <form action="../html/cadastro.html" method="post" style="max-width:350px;margin:0 auto;">
@@ -91,9 +87,8 @@ $conn->close();
 
         <!-- Exibição de mensagens de erro -->
         <?php if (!empty($error)) : ?>
-            <p style="color: #d7263d;font-weight:bold;"><?= $error ?></p>
+            <p style="color: #d7263d;font-weight:bold;max-width:350px;margin:18px auto 0 auto;"><?= $error ?></p>
         <?php endif; ?>
-
     </main>
 </body>
 </html>

@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <header class="holder">
-        <h1>Perfil</h1>
+        <h1 style="font-size:var(--font-title);">Perfil</h1>
         <nav>
             <a href="dieta.php">Dieta</a>
             <a href="treinos.php">Treinos</a>
@@ -49,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="logout.php">Sair</a>
         </nav>
     </header>
-    <main class="conteudo" style="max-width:500px;margin:0 auto;">
-        <h2 style="font-size:1.5em;letter-spacing:1px;margin-bottom:18px;text-shadow:0 2px 8px #fbc2eb99;">Seus Dados</h2>
+    <main class="conteudo" style="max-width:var(--container-max-width);padding:var(--container-padding);">
+        <h2 style="font-size:var(--font-subtitle);letter-spacing:1px;margin-bottom:18px;text-shadow:0 2px 8px #fbc2eb99;">Seus Dados</h2>
         <?php
         if ($result && $result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         ?>
         <div style="display:flex;justify-content:center;gap:10px;">
-            <button id="btn-atualizar" style="padding:6px 18px;font-size:0.95em;min-width:90px;max-width:120px;">Atualizar Objetivo</button>
+            <button id="btn-atualizar" style="font-size:var(--button-font-size);padding:var(--button-padding);border-radius:var(--button-radius);">Atualizar Objetivo</button>
         </div>
         <form id="form-objetivo" method="POST" action="" style="display:none;max-width:350px;margin:10px auto 0 auto;flex-direction:column;gap:10px;align-items:center;background:rgba(255,255,255,0.4);border-radius:10px;padding:18px 16px;box-shadow:0 2px 8px #a1c4fd22;">
             <label for="objetivo">Escolha o novo objetivo:</label>
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="perder">Perder Peso</option>
                 <option value="manter">Manter Peso</option>
             </select>
-            <button type="submit" style="align-self:center;padding:6px 18px;font-size:0.95em;min-width:90px;max-width:120px;">Atualizar</button>
+            <button type="submit" style="align-self:center;font-size:var(--button-font-size);padding:var(--button-padding);border-radius:var(--button-radius);">Atualizar</button>
         </form>
     </main>
 

@@ -15,7 +15,7 @@
             <a href="logout.php">Sair</a>
         </nav>
     </header>
-    <main class="conteudo" style="max-width:600px;margin:0 auto;">
+    <main class="conteudo" style="max-width:var(--container-max-width);padding:var(--container-padding);">
         <?php
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
@@ -131,7 +131,7 @@
         echo "<h3>Recomendações Finais:</h3>";
         echo "<p>A BYB recomenda a consulta de um nutricionista para um plano alimentar personalizado.</p>";
         ?>
-        <div style="display:flex;justify-content:center;margin-top:32px;">
+        <div style="display:flex;justify-content:center;margin-top:32px;max-width:var(--container-max-width);">
             <button onclick="window.location.href='dieta.php'" style="padding:6px 18px;font-size:0.95em;min-width:90px;max-width:120px;">Voltar</button>
         </div>
     </main>
