@@ -6,8 +6,8 @@
 }
 
 body {
-    /* Gradiente animado com tons de verde ainda mais escuros */
-    background: linear-gradient(120deg, #0a1912 0%, #113c24 25%, #174d2c 50%, #1e5e34 75%, #267f4a 100%);
+    /* Gradiente animado com tons de verde e destaques adicionais */
+    background: linear-gradient(120deg, #0a1912 0%, #113c24 15%, #174d2c 30%, #1e5e34 45%, #267f4a 60%, #43e97b 75%);
     background-size: 300% 300%;
     animation: gradientBG 16s ease-in-out infinite;
     color: #e0e0e0;
@@ -265,4 +265,42 @@ input:focus, select:focus {
 
 .close:hover {
     color: #fbc2eb;
+}
+
+/* .logo-home container removido, apenas imagem crua */
+.logo-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 36px auto 0 auto;
+    /* LED verde em volta da imagem */
+}
+
+.logo-home img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    /* LED verde suave */
+    box-shadow: 0 0 24px 6px #43e97b88, 0 0 2px #43e97b;
+    transition: box-shadow 0.4s cubic-bezier(.68,-0.55,.27,1.55), transform 0.4s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.logo-home img:hover {
+    /* LED mais forte e imagem maior */
+    box-shadow: 0 0 48px 16px #43e97bcc, 0 0 8px #43e97b;
+    transform: scale(1.10);
+}
+
+@media (max-width: 600px) {
+    .logo-home {
+        max-width: none;
+        padding: 0;
+        border-radius: 0;
+    }
+    .logo-home img {
+        max-width: 140px;
+        border-radius: 0;
+    }
 }

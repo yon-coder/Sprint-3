@@ -25,36 +25,31 @@ $sexo = strtolower($row['sexo']);
 
 $treinos = [
     'Perna' => [
-        ['exercicio' => 'Agachamento Livre', 'series' => '4x12', 'dica' => 'Mantenha a carga constante para focar na execução.'],
-        ['exercicio' => 'Leg Press', 'series' => '4x10', 'dica' => 'Progressão de carga a cada série.'],
         ['exercicio' => 'Cadeira Extensora', 'series' => '3x15', 'dica' => 'Concentre-se na contração máxima.'],
-        ['exercicio' => 'Levantamento Terra', 'series' => '4x8', 'dica' => 'Aumente a carga gradativamente.'],
-        ['exercicio' => 'Afundo com Halteres', 'series' => '3x12', 'dica' => 'Priorize o equilíbrio e a amplitude.'],
-        ['exercicio' => 'Stiff', 'series' => '4x10', 'dica' => 'Foque na descida controlada.'],
-        ['exercicio' => 'Leg Curl', 'series' => '3x12', 'dica' => 'Mantenha a carga moderada para evitar lesões.'],
-        ['exercicio' => 'Cadeira Adutora', 'series' => '3x15', 'dica' => 'Movimento lento e controlado.'],
-        ['exercicio' => 'Panturrilha no Leg Press', 'series' => '4x15', 'dica' => 'Faça o movimento completo para melhor ativação.'],
+        ['exercicio' => 'Cadeira Flexora', 'series' => '3x15', 'dica' => 'Mantenha o movimento controlado.'],
+        ['exercicio' => 'Mesa Flexora', 'series' => '3x15', 'dica' => 'Evite movimentos bruscos e foque na amplitude.'],
+        ['exercicio' => 'Leg Press', 'series' => '3x15', 'dica' => 'Ajuste a carga para manter a execução perfeita.'],
+        ['exercicio' => 'Agachamento na Barra Guiada', 'series' => '3x12', 'dica' => 'Mantenha a postura e desça até 90 graus.'],
+        ['exercicio' => 'Panturrilha em Pé com Halteres', 'series' => '4x10', 'dica' => 'Faça o movimento completo e segure no topo.'],
+        ['exercicio' => 'Cardio (mínimo 30 minutos)', 'series' => '-', 'dica' => 'Escolha entre esteira, bicicleta, escada ou elíptico. Mantenha intensidade moderada.'],
     ],
-    'Costas/Antebraço/Bíceps' => [
-        ['exercicio' => 'Puxada na Barra Fixa', 'series' => '3x8', 'dica' => 'Foque na execução correta.'],
-        ['exercicio' => 'Remada Curvada', 'series' => '4x10', 'dica' => 'Mantenha a postura reta durante o movimento.'],
+    'Costas/Bíceps' => [
+        ['exercicio' => 'Remador Triângulo', 'series' => '4x10', 'dica' => 'Mantenha a postura reta durante o movimento e puxe o triângulo até o abdômen.'],
         ['exercicio' => 'Pulley Frente', 'series' => '3x12', 'dica' => 'Progressão leve a cada série.'],
-        ['exercicio' => 'Rosca Direta', 'series' => '3x15', 'dica' => 'Use carga moderada para manter o controle.'],
-        ['exercicio' => 'Rosca Martelo', 'series' => '3x12', 'dica' => 'Evite balanço do corpo.'],
-        ['exercicio' => 'Rosca Inversa', 'series' => '3x12', 'dica' => 'Controle a descida para maior eficiência.'],
-        ['exercicio' => 'Rosca Concentrada', 'series' => '3x10', 'dica' => 'Use carga leve para manter a forma.'],
+        ['exercicio' => 'Pulley Frente com Triângulo', 'series' => '3x12', 'dica' => 'Use o triângulo para maior ativação do centro das costas. Mantenha o tronco estável.'],
+        ['exercicio' => 'Rosca Direta no Cross Over', 'series' => '3x15', 'dica' => 'Mantenha os cotovelos fixos e concentre o esforço nos bíceps. Use o cross para maior controle e amplitude.'],
+        ['exercicio' => 'Rosca Alternada com Halter', 'series' => '3x12', 'dica' => 'Execute alternando os braços, sem balanço do corpo, utilizando halteres.'],
+        ['exercicio' => 'Cardio (mínimo 30 minutos)', 'series' => '-', 'dica' => 'Escolha entre esteira, bicicleta, escada ou elíptico. Mantenha intensidade moderada.'],
     ],
     'Peito/Ombro/Tríceps' => [
-        ['exercicio' => 'Supino Reto', 'series' => '4x8', 'dica' => 'Mantenha a carga estável em todas as séries.'],
         ['exercicio' => 'Supino Inclinado', 'series' => '3x10', 'dica' => 'Progrida na última série se sentir conforto.'],
         ['exercicio' => 'Desenvolvimento com Halteres', 'series' => '4x12', 'dica' => 'Amplitude total para melhor ativação.'],
-        ['exercicio' => 'Crucifixo Inclinado', 'series' => '3x15', 'dica' => 'A carga deve permitir um movimento amplo.'],
+        ['exercicio' => 'Crucifixo', 'series' => '3x15', 'dica' => 'A carga deve permitir um movimento amplo.'],
         ['exercicio' => 'Fly Pec Deck', 'series' => '3x12', 'dica' => 'Movimento lento e controlado.'],
         ['exercicio' => 'Elevação Lateral', 'series' => '3x12', 'dica' => 'Evite movimentos bruscos.'],
-        ['exercicio' => 'Desenvolvimento Militar', 'series' => '4x8', 'dica' => 'Aumente a carga nas últimas séries.'],
-        ['exercicio' => 'Flexão de Braço', 'series' => '3x15', 'dica' => 'Foque na postura correta.'],
         ['exercicio' => 'Tríceps Pulley', 'series' => '3x12', 'dica' => 'Movimento completo para máximo estímulo.'],
-        ['exercicio' => 'Tríceps Testa', 'series' => '3x10', 'dica' => 'A carga deve ser leve para proteger as articulações.'],
+        ['exercicio' => 'Tríceps Corda', 'series' => '3x12', 'dica' => 'Mantenha os cotovelos próximos ao corpo e faça a extensão completa do tríceps.'],
+        ['exercicio' => 'Cardio (mínimo 30 minutos)', 'series' => '-', 'dica' => 'Escolha entre esteira, bicicleta, escada ou elíptico. Mantenha intensidade moderada.'],
     ],
 ];
 ?>
@@ -65,7 +60,7 @@ $treinos = [
     <meta charset="UTF-8" />
     <title>Treinos Personalizados - BYB</title>
     <link rel="stylesheet" href="../css/estilo.css" />
-    <link rel=icon type="image/png" href="../imgs/green_pokeball_by_jormxdos_dfgb82o-fullview.png">
+    <link rel="icon" type="image/jpg" href="../imgs/logoBYB.jpg">
     <style>
         .treino-titulo {
             cursor: pointer;
@@ -77,12 +72,43 @@ $treinos = [
             user-select: none;
         }
         .treino-conteudo {
-            display: none;
+            display: block;
             margin: 5px 0;
             padding: 10px;
             border: 1px solid #007bff;
             border-radius: 5px;
             background-color: #f0f8ff;
+            /* Animação de slide */
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            will-change: max-height, opacity;
+        }
+        .treino-conteudo.ativo {
+            display: block;
+            max-height: 1000px;
+            opacity: 1;
+            transition: max-height 1.1s cubic-bezier(.77,0,.18,1), opacity 0.7s;
+        }
+        .treino-conteudo.saindo {
+            max-height: 0 !important;
+            opacity: 0 !important;
+            transition: max-height 1.1s cubic-bezier(.77,0,.18,1), opacity 0.7s;
+        }
+        .treino-conteudo-inner {
+            opacity: 0;
+            transform: translateY(-32px);
+            transition: opacity 0.7s, transform 0.7s;
+        }
+        .treino-conteudo.ativo .treino-conteudo-inner {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.7s 0.2s, transform 0.7s 0.2s;
+        }
+        .treino-conteudo.saindo .treino-conteudo-inner {
+            opacity: 0;
+            transform: translateY(-32px);
+            transition: opacity 0.5s, transform 0.5s;
         }
         .exercicio {
             margin-bottom: 5px;
@@ -112,17 +138,19 @@ $treinos = [
         <?php $i++; endforeach; ?>
         </div>
         <?php $i=0; foreach ($treinos as $grupo => $exercicios): ?>
-            <div class="treino-conteudo" data-idx="<?php echo $i; ?>" style="display:none;background:rgba(255,255,255,0.25);backdrop-filter:blur(6px);border-radius:18px;box-shadow:0 4px 24px #43e97b22;margin-bottom:28px;padding:28px 24px 18px 24px;max-width:600px;margin-left:auto;margin-right:auto;">
-                <h3 style="font-size:1.25em;color:#43e97b;margin-bottom:18px;text-align:center;text-shadow:0 2px 8px #38f9d799;letter-spacing:1px;">Treino de <?php echo $grupo; ?></h3>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;">
-                <?php foreach ($exercicios as $ex): ?>
-                    <div class="exercicio" style="background:rgba(255,255,255,0.55);border-radius:12px;padding:14px 12px 10px 16px;box-shadow:0 2px 8px #43e97b22;display:flex;flex-direction:column;align-items:flex-start;">
-                        <span style="font-weight:bold;font-size:1.08em;color:#267f4a;letter-spacing:0.5px;">
-                            <?php echo $ex['exercicio']; ?> <span style="color:#145c36;font-size:0.98em;">(<?php echo $ex['series']; ?>)</span>
-                        </span>
-                        <span class="dica" style="color:#267f4a;font-size:0.97em;margin-top:4px;opacity:0.85;">💡 <?php echo $ex['dica']; ?></span>
+            <div class="treino-conteudo" data-idx="<?php echo $i; ?>" style="background:rgba(255,255,255,0.25);backdrop-filter:blur(6px);border-radius:18px;box-shadow:0 4px 24px #43e97b22;margin-bottom:28px;padding:0;max-width:600px;margin-left:auto;margin-right:auto;">
+                <div class="treino-conteudo-inner" style="padding:28px 24px 18px 24px;">
+                    <h3 style="font-size:1.25em;color:#43e97b;margin-bottom:18px;text-align:center;text-shadow:0 2px 8px #38f9d799;letter-spacing:1px;">Treino de <?php echo $grupo; ?></h3>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;">
+                    <?php foreach ($exercicios as $ex): ?>
+                        <div class="exercicio" style="background:rgba(255,255,255,0.55);border-radius:12px;padding:14px 12px 10px 16px;box-shadow:0 2px 8px #43e97b22;display:flex;flex-direction:column;align-items:flex-start;">
+                            <span style="font-weight:bold;font-size:1.08em;color:#267f4a;letter-spacing:0.5px;">
+                                <?php echo $ex['exercicio']; ?> <span style="color:#145c36;font-size:0.98em;">(<?php echo $ex['series']; ?>)</span>
+                            </span>
+                            <span class="dica" style="color:#267f4a;font-size:0.97em;margin-top:4px;opacity:0.85;">💡 <?php echo $ex['dica']; ?></span>
+                        </div>
+                    <?php endforeach; ?>
                     </div>
-                <?php endforeach; ?>
                 </div>
             </div>
         <?php $i++; endforeach; ?>
@@ -134,21 +162,32 @@ $treinos = [
         botoes.forEach((btn, idx) => {
             btn.addEventListener('click', function() {
                 const content = document.querySelector('.treino-conteudo[data-idx="'+idx+'"]');
-                if(content.style.display === 'block') {
-                    content.style.display = 'none';
+                if(content.classList.contains('ativo')) {
+                    content.classList.remove('ativo');
+                    content.classList.add('saindo');
                     btn.classList.remove('ativo');
+                    btn.style.color = '#fff';
+                    setTimeout(()=>{
+                        content.classList.remove('saindo');
+                        content.style.display='none';
+                    }, 1100);
                 } else {
                     conteudos.forEach((c, i) => {
+                        c.classList.remove('ativo');
+                        c.classList.remove('saindo');
                         c.style.display = 'none';
                         botoes[i].classList.remove('ativo');
+                        botoes[i].style.color = '#fff';
                     });
                     content.style.display = 'block';
+                    setTimeout(()=>{content.classList.add('ativo');}, 10);
                     btn.classList.add('ativo');
+                    btn.style.color = '#267f4a';
                 }
             });
             btn.addEventListener('mouseover', function(){
                 btn.style.background = 'linear-gradient(90deg,#38f9d7 0%,#43e97b 100%)';
-                btn.style.color = '#267f4a';
+                if (!btn.classList.contains('ativo')) btn.style.color = '#267f4a';
                 btn.style.transform = 'scale(1.04)';
             });
             btn.addEventListener('mouseout', function(){

@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <title>Sua Dieta - BYB</title>
     <link rel="stylesheet" href="../css/estilo.css">
-    <link rel=icon type="image/png" href="../imgs/green_pokeball_by_jormxdos_dfgb82o-fullview.png">
+    <link rel="icon" type="image/png" href="../imgs/logoBYB.jpg">
 </head>
 <body>
     <header class="holder">
@@ -53,7 +53,13 @@
         }
 
         function calcular_tmb($peso, $altura, $idade, $sexo) {
-            return $sexo === 'masculino' ? 88.36 + (13.4 * $peso) + (4.8 * ($altura * 100)) - (5.7 * $idade) : 447.6 + (9.2 * $peso) + (3.1 * ($altura * 100)) - (4.3 * $idade);
+            // Fórmulas de Harris-Benedict revisadas (Mifflin-St Jeor)
+            if ($sexo === 'masculino') {
+                // TMB = 88.362 + (13.397 x peso) + (4.799 x altura em cm) - (5.677 x idade)
+                return 88.362 + (13.397 * $peso) + (4.799 * ($altura * 100)) - (5.677 * $idade);
+            }else{
+                return 88.362 + (13.397 * $peso) + (4.799 * ($altura * 100)) - (5.677 * $idade);
+            }
         }
 
         function ajustar_calorias($tmb, $objetivo) {
