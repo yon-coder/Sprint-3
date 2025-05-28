@@ -129,9 +129,10 @@ $treinos = [
         </nav>
     </header>
     <main class="conteudo" style="max-width:var(--container-max-width);padding:var(--container-padding);min-height:auto;">
-        <h2 style="font-size:var(--font-subtitle);letter-spacing:1px;margin-bottom:24px;text-shadow:0 2px 8px #43e97b99;">Objetivo: <b><?php echo ucfirst($objetivo); ?></b></h2>
+        <h2 style="font-size:var(--font-subtitle);letter-spacing:1px;margin-bottom:24px;text-shadow:0 2px 8px #43e97b99;">15 primeiros dias - adaptação:</h2>
         <div id="botoes-treino" style="display:flex;flex-wrap:wrap;gap:18px 24px;justify-content:center;margin-bottom:32px;">
-        <?php $i=0; foreach ($treinos as $grupo => $exercicios): ?>
+        <?php $i=0; foreach (
+            $treinos as $grupo => $exercicios): ?>
             <button class="treino-titulo" data-idx="<?php echo $i; ?>" style="font-size:var(--button-font-size);padding:var(--button-padding);border-radius:var(--button-radius);background:linear-gradient(90deg,#43e97b 0%,#38f9d7 100%);color:#fff;font-weight:bold;min-width:180px;letter-spacing:1px;">
                 <?php echo $grupo; ?>
             </button>
@@ -154,36 +155,141 @@ $treinos = [
                 </div>
             </div>
         <?php $i++; endforeach; ?>
+        <h2 style="font-size:var(--font-subtitle);letter-spacing:1px;margin:40px 0 24px 0;text-shadow:0 2px 8px #43e97b99;">Objetivo: <b><?php echo ucfirst($objetivo); ?></b></h2>
+        <?php
+        // Função para ajustar séries/reps e dicas conforme objetivo
+        function ajustarTreinoPorObjetivo($treinos, $objetivo) {
+            $novoTreino = [];
+            $dicaObjetivo = '';
+            $objetivo = strtolower($objetivo);
+            if ($objetivo === 'ganho de massa' || $objetivo === 'hipertrofia') {
+                $dicaObjetivo = 'Já que quer ganhar massa, busque sempre colocar mais peso, mantendo a execução correta.';
+                $series = '4x8-10';
+                $cardio = 'Cardio leve, 15-20 minutos após o treino.';
+            } elseif ($objetivo === 'emagrecimento' || $objetivo === 'perda de peso') {
+                $dicaObjetivo = 'Foque em intensidade, pouco descanso e mantenha o ritmo elevado. Cardio é fundamental!';
+                $series = '3x15-20';
+                $cardio = 'Cardio intenso, 30-40 minutos após o treino.';
+            } else {
+                $dicaObjetivo = 'Mantenha regularidade e busque sempre evoluir nas cargas e execução.';
+                $series = '3x12-15';
+                $cardio = 'Cardio moderado, 20-30 minutos após o treino.';
+            }
+            foreach ($treinos as $grupo => $exercicios) {
+                $novoExs = [];
+                foreach ($exercicios as $ex) {
+                    if (stripos($ex['exercicio'], 'Cardio') !== false) {
+                        $novoExs[] = [
+                            'exercicio' => $ex['exercicio'],
+                            'series' => '-',
+                            'dica' => $cardio
+                        ];
+                    } else {
+                        $novoExs[] = [
+                            'exercicio' => $ex['exercicio'],
+                            'series' => $series,
+                            'dica' => $ex['dica'] . ' ' . $dicaObjetivo
+                        ];
+                    }
+                }
+                $novoTreino[$grupo] = $novoExs;
+            }
+            return $novoTreino;
+        }
+        $treinosObjetivo = ajustarTreinoPorObjetivo($treinos, $objetivo);
+        ?>
+        <div id="botoes-treino-objetivo" style="display:flex;flex-wrap:wrap;gap:18px 24px;justify-content:center;margin-bottom:32px;">
+        <?php $j=0; foreach ($treinosObjetivo as $grupo => $exercicios): ?>
+            <button class="treino-titulo" data-idx="obj<?php echo $j; ?>" style="font-size:var(--button-font-size);padding:var(--button-padding);border-radius:var(--button-radius);background:linear-gradient(90deg,#43e97b 0%,#38f9d7 100%);color:#fff;font-weight:bold;min-width:180px;letter-spacing:1px;">
+                <?php echo $grupo; ?>
+            </button>
+        <?php $j++; endforeach; ?>
+        </div>
+        <?php $j=0; foreach ($treinosObjetivo as $grupo => $exercicios): ?>
+            <div class="treino-conteudo" data-idx="obj<?php echo $j; ?>" style="background:rgba(255,255,255,0.25);backdrop-filter:blur(6px);border-radius:18px;box-shadow:0 4px 24px #43e97b22;margin-bottom:28px;padding:0;max-width:600px;margin-left:auto;margin-right:auto;display:none;">
+                <div class="treino-conteudo-inner" style="padding:28px 24px 18px 24px;">
+                    <h3 style="font-size:1.25em;color:#43e97b;margin-bottom:18px;text-align:center;text-shadow:0 2px 8px #38f9d799;letter-spacing:1px;">Treino de <?php echo $grupo; ?> (Objetivo)</h3>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;">
+                    <?php foreach ($exercicios as $ex): ?>
+                        <div class="exercicio" style="background:rgba(255,255,255,0.55);border-radius:12px;padding:14px 12px 10px 16px;box-shadow:0 2px 8px #43e97b22;display:flex;flex-direction:column;align-items:flex-start;">
+                            <span style="font-weight:bold;font-size:1.08em;color:#267f4a;letter-spacing:0.5px;">
+                                <?php echo $ex['exercicio']; ?> <span style="color:#145c36;font-size:0.98em;">(<?php echo $ex['series']; ?>)</span>
+                            </span>
+                            <span class="dica" style="color:#267f4a;font-size:0.97em;margin-top:4px;opacity:0.85;">💡 <?php echo $ex['dica']; ?></span>
+                        </div>
+                    <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        <?php $j++; endforeach; ?>
     </main>
     <script>
         // Corrigido: ao clicar, mostra/oculta apenas o treino correspondente, mantendo os botões visíveis
         const botoes = document.querySelectorAll('.treino-titulo');
         const conteudos = document.querySelectorAll('.treino-conteudo');
-        botoes.forEach((btn, idx) => {
-            btn.addEventListener('click', function() {
-                const content = document.querySelector('.treino-conteudo[data-idx="'+idx+'"]');
-                if(content.classList.contains('ativo')) {
-                    content.classList.remove('ativo');
-                    content.classList.add('saindo');
-                    btn.classList.remove('ativo');
-                    btn.style.color = '#fff';
-                    setTimeout(()=>{
-                        content.classList.remove('saindo');
-                        content.style.display='none';
-                    }, 1100);
-                } else {
-                    conteudos.forEach((c, i) => {
-                        c.classList.remove('ativo');
+        // Separar botões e conteúdos de adaptação e objetivo
+        const botoesAdap = document.querySelectorAll('#botoes-treino .treino-titulo');
+        const conteudosAdap = document.querySelectorAll('.treino-conteudo[data-idx]:not([data-idx^="obj"])');
+        const botoesObj = document.querySelectorAll('#botoes-treino-objetivo .treino-titulo');
+        const conteudosObj = document.querySelectorAll('.treino-conteudo[data-idx^="obj"]');
+
+        // Função para ativar/ocultar treinos
+        function ativaTreino(btns, conteudos, idx) {
+            const content = conteudos[idx];
+            const btn = btns[idx];
+            // Se já está ativo, anima saída
+            if (content.classList.contains('ativo')) {
+                content.classList.remove('ativo');
+                content.classList.add('saindo');
+                btn.classList.remove('ativo');
+                btn.style.color = '#fff';
+                setTimeout(() => {
+                    content.classList.remove('saindo');
+                    content.style.display = 'none';
+                }, 800); // tempo igual ao transition do CSS
+                return;
+            }
+            // Fecha todos antes de abrir o novo
+            conteudos.forEach((c, i) => {
+                if (c.classList.contains('ativo')) {
+                    c.classList.remove('ativo');
+                    c.classList.add('saindo');
+                    btns[i].classList.remove('ativo');
+                    btns[i].style.color = '#fff';
+                    setTimeout(() => {
                         c.classList.remove('saindo');
                         c.style.display = 'none';
-                        botoes[i].classList.remove('ativo');
-                        botoes[i].style.color = '#fff';
-                    });
-                    content.style.display = 'block';
-                    setTimeout(()=>{content.classList.add('ativo');}, 10);
-                    btn.classList.add('ativo');
-                    btn.style.color = '#267f4a';
+                    }, 800);
+                } else {
+                    c.classList.remove('saindo');
+                    c.style.display = 'none';
                 }
+            });
+            // Abre o selecionado
+            content.style.display = 'block';
+            setTimeout(()=>{content.classList.add('ativo');}, 10);
+            btn.classList.add('ativo');
+            btn.style.color = '#267f4a';
+        }
+
+        botoesAdap.forEach((btn, idx) => {
+            btn.addEventListener('click', function() {
+                ativaTreino(botoesAdap, conteudosAdap, idx);
+            });
+            btn.addEventListener('mouseover', function(){
+                btn.style.background = 'linear-gradient(90deg,#38f9d7 0%,#43e97b 100%)';
+                if (!btn.classList.contains('ativo')) btn.style.color = '#267f4a';
+                btn.style.transform = 'scale(1.04)';
+            });
+            btn.addEventListener('mouseout', function(){
+                btn.style.background = btn.classList.contains('ativo') ? 'linear-gradient(90deg,#38f9d7 0%,#43e97b 100%)' : 'linear-gradient(90deg,#43e97b 0%,#38f9d7 100%)';
+                btn.style.color = btn.classList.contains('ativo') ? '#267f4a' : '#fff';
+                btn.style.transform = 'scale(1)';
+            });
+        });
+        botoesObj.forEach((btn, idx) => {
+            btn.addEventListener('click', function() {
+                ativaTreino(botoesObj, conteudosObj, idx);
             });
             btn.addEventListener('mouseover', function(){
                 btn.style.background = 'linear-gradient(90deg,#38f9d7 0%,#43e97b 100%)';
