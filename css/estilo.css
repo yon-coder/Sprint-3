@@ -7,7 +7,7 @@
 
 body {
     /* Gradiente animado com tons de verde e destaques adicionais */
-    background: linear-gradient(120deg, #0a1912 0%, #113c24 15%, #174d2c 30%, #1e5e34 45%, #267f4a 60%, #43e97b 75%);
+    background: linear-gradient(120deg, #0a1912 0%, #113c24 15%, #174d2c 30%, #1e5e34 45%, #267f4a 60%, #43e97b 100%);
     background-size: 300% 300%;
     animation: gradientBG 16s ease-in-out infinite;
     color: #e0e0e0;

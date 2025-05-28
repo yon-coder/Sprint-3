@@ -84,11 +84,21 @@ $conn->close();
         <form action="../html/cadastro.html" method="post" style="max-width:350px;margin:0 auto;">
             <button type="submit">Cadastrar</button>
         </form>
+                <br><br>
+        <h2 style="font-size:1.2em;margin:32px 0 12px 0;text-shadow:0 2px 8px #a1c4fd55;">Problemas? Contate-nos em cnt.suportebyb@gmail.com<br>Ou preencha o formulário:</h2>
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSf2KBSUuejohx_E6nR1qhZqpmzXM7Xbxp0NucBzYJhRrT8TjQ/viewform?usp=dialog" method="get" target="_blank" style="max-width:350px;margin:0 auto;">
+            <button type="submit">Suporte</button>
+        </form>
+
 
         <!-- Exibição de mensagens de erro -->
         <?php if (!empty($error)) : ?>
             <p style="color: #d7263d;font-weight:bold;max-width:350px;margin:18px auto 0 auto;"><?= $error ?></p>
         <?php endif; ?>
     </main>
+        <footer class="holder" style="text-align:center;padding:20px 0;">
+        <p style="font-size:var(--font-base);margin:0;">Site desenvolvido para pessoas em obesidade/sobre-peso, ou para quem deseja seguir uma vida mais saudável e ativa.</p>
+        <p style="font-size:var(--font-base);">© 2025 BYB - Build Your Body. Todos os direitos reservados.</p>
+
 </body>
 </html>

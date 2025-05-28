@@ -83,5 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         ?>
     </main>
+        <footer class="holder" style="text-align:center;padding:20px 0;">
+        <p style="font-size:var(--font-base);margin:0;">Site desenvolvido para pessoas em obesidade/sobre-peso, ou para quem deseja seguir uma vida mais saudável e ativa.</p>
+        <p style="font-size:var(--font-base);">© 2025 BYB - Build Your Body. Todos os direitos reservados.</p>
+
 </body>
 </html>

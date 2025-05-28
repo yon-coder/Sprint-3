@@ -128,7 +128,7 @@ $treinos = [
             <a href="logout.php">Sair</a>
         </nav>
     </header>
-    <main class="conteudo" style="max-width:var(--container-max-width);padding:var(--container-padding);">
+    <main class="conteudo" style="max-width:var(--container-max-width);padding:var(--container-padding);min-height:auto;">
         <h2 style="font-size:var(--font-subtitle);letter-spacing:1px;margin-bottom:24px;text-shadow:0 2px 8px #43e97b99;">Objetivo: <b><?php echo ucfirst($objetivo); ?></b></h2>
         <div id="botoes-treino" style="display:flex;flex-wrap:wrap;gap:18px 24px;justify-content:center;margin-bottom:32px;">
         <?php $i=0; foreach ($treinos as $grupo => $exercicios): ?>
@@ -138,7 +138,7 @@ $treinos = [
         <?php $i++; endforeach; ?>
         </div>
         <?php $i=0; foreach ($treinos as $grupo => $exercicios): ?>
-            <div class="treino-conteudo" data-idx="<?php echo $i; ?>" style="background:rgba(255,255,255,0.25);backdrop-filter:blur(6px);border-radius:18px;box-shadow:0 4px 24px #43e97b22;margin-bottom:28px;padding:0;max-width:600px;margin-left:auto;margin-right:auto;">
+            <div class="treino-conteudo" data-idx="<?php echo $i; ?>" style="background:rgba(255,255,255,0.25);backdrop-filter:blur(6px);border-radius:18px;box-shadow:0 4px 24px #43e97b22;margin-bottom:28px;padding:0;max-width:600px;margin-left:auto;margin-right:auto;display:none;">
                 <div class="treino-conteudo-inner" style="padding:28px 24px 18px 24px;">
                     <h3 style="font-size:1.25em;color:#43e97b;margin-bottom:18px;text-align:center;text-shadow:0 2px 8px #38f9d799;letter-spacing:1px;">Treino de <?php echo $grupo; ?></h3>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;">
@@ -197,6 +197,10 @@ $treinos = [
             });
         });
     </script>
+        <footer class="holder" style="text-align:center;padding:20px 0;">
+        <p style="font-size:var(--font-base);margin:0;">Site desenvolvido para pessoas em obesidade/sobre-peso, ou para quem deseja seguir uma vida mais saudável e ativa.</p>
+        <p style="font-size:var(--font-base);">© 2025 BYB - Build Your Body. Todos os direitos reservados.</p>
+
 </body>
 </html>
 

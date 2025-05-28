@@ -141,5 +141,9 @@
             <button onclick="window.location.href='dieta.php'" style="padding:6px 18px;font-size:0.95em;min-width:90px;max-width:120px;">Voltar</button>
         </div>
     </main>
+        <footer class="holder" style="text-align:center;padding:20px 0;">
+        <p style="font-size:var(--font-base);margin:0;">Site desenvolvido para pessoas em obesidade/sobre-peso, ou para quem deseja seguir uma vida mais saudável e ativa.</p>
+        <p style="font-size:var(--font-base);">© 2025 BYB - Build Your Body. Todos os direitos reservados.</p>
+
 </body>
 </html>
