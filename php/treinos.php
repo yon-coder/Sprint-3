@@ -162,11 +162,11 @@ $treinos = [
             $novoTreino = [];
             $dicaObjetivo = '';
             $objetivo = strtolower($objetivo);
-            if ($objetivo === 'ganho de massa' || $objetivo === 'hipertrofia') {
+            if ($objetivo === 'ganhar' || $objetivo === 'hipertrofia') {
                 $dicaObjetivo = 'Já que quer ganhar massa, busque sempre colocar mais peso, mantendo a execução correta.';
                 $series = '4x8-10';
-                $cardio = 'Cardio leve, 15-20 minutos após o treino.';
-            } elseif ($objetivo === 'emagrecimento' || $objetivo === 'perda de peso') {
+                $cardio = 'Cardio leve, 20-30 minutos após o treino.';
+            } elseif ($objetivo === 'perder' || $objetivo === 'perda de peso') {
                 $dicaObjetivo = 'Foque em intensidade, pouco descanso e mantenha o ritmo elevado. Cardio é fundamental!';
                 $series = '3x15-20';
                 $cardio = 'Cardio intenso, 30-40 minutos após o treino.';
